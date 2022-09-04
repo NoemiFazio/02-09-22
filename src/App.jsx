@@ -7,8 +7,7 @@ import "./App.css";
 import { useState } from "react";
 
 function App() {
-  const [inputValue, setInputValue] = useState("324668");
-  const [isRenderedList, setRenderedList] = useState(false);
+  const [inputValue, setInputValue] = useState("");
 
   //Modale
   const [modalData, setModalData] = useState({});
@@ -29,17 +28,8 @@ function App() {
         onModalClick={setModalVisibility}
       />
       <MainSection modalVisibility={onHandleModal} />
-      <MainInput
-        inputValue={inputValue}
-        setInputValue={setInputValue}
-        isRenderedList={isRenderedList}
-        onFormsubmit={setRenderedList}
-      />
-      <MovieEntity
-        movieID={inputValue}
-        setInputValue={setInputValue}
-        isRenderedList={isRenderedList}
-      />
+      <MainInput inputValue={inputValue} setInputValue={setInputValue} />
+      <MovieEntity movieID={inputValue ? inputValue : 324668} />
     </div>
   );
 }

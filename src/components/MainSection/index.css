@@ -19,4 +19,5 @@
   justify-content: space-evenly;
   /* gap: 132px; */
   width: 1000px;
+  align-items: center;
 }

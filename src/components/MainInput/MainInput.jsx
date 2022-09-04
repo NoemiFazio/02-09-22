@@ -3,12 +3,7 @@ import { IconContext } from "react-icons";
 import { BsSearch } from "react-icons/bs";
 import "./index.css";
 
-const MainInput = ({
-  inputValue,
-  setInputValue,
-  isRenderedList,
-  onFormsubmit,
-}) => {
+const MainInput = ({ inputValue, setInputValue }) => {
   const [isInputVisibile, setInputVisibility] = useState(false);
 
   useEffect(() => {
@@ -21,12 +16,17 @@ const MainInput = ({
 
   const onHandleSubmit = (e) => {
     e.preventDefault();
-    onFormsubmit(!isRenderedList);
+    setInputValue(e.target.value);
+    inputRef.current.classList.toggle("searchInput");
   };
 
   const onHandleInput = (e) => setInputValue(e.target.value);
 
   // console.log(inputValue);
+  //per aggiungere la classe per fare il toggle
+  const inputRef = useRef(null);
+  //quindi aggiungi ad onHandleSubmit
+  //e su <input> aggiungi la ref
 
   return (
     <IconContext.Provider
@@ -38,16 +38,17 @@ const MainInput = ({
       <form className="MainInput" onSubmit={onHandleSubmit}>
         {isInputVisibile && (
           <>
+            <button type="submit">
+              <BsSearch />
+            </button>{" "}
             <input
+              ref={inputRef}
               value={inputValue}
               onChange={onHandleInput}
               type="text"
               maxLength="6"
               placeholder="Search by Id"
             />
-            <button type="submit">
-              <BsSearch />
-            </button>{" "}
           </>
         )}
       </form>

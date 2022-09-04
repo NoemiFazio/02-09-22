@@ -4,7 +4,7 @@ const Counter = ({ increase, decrease, page }) => {
   return (
     <div className="counter">
       {" "}
-      <button className="decrease-btn" onClick={decrease}>
+      <button disabled={page === 1} className="decrease-btn" onClick={decrease}>
         -
       </button>
       <p>{page}</p>

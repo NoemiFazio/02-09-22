@@ -8,7 +8,7 @@ import "./index.css";
 
 const MainSection = ({ modalVisibility }) => {
   const [movieLists, setMovieLists] = useState({});
-  const [page, setPage] = useState(3);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     GET("movie", "popular", "&language=en-US&page=").then((data) =>
@@ -22,7 +22,7 @@ const MainSection = ({ modalVisibility }) => {
     GET("movie", "upcoming", "&language=en-US&page=").then((data) =>
       setMovieLists((prev) => ({ ...prev, upcoming: data.results }))
     );
-  }, []);
+  }, [page]);
 
   return (
     <div className="MainSection">
@@ -42,13 +42,13 @@ const MainSection = ({ modalVisibility }) => {
               nCards={6}
               modalVisibility={modalVisibility}
             />
-            {/* <Counter
-              increase={() => setPage((prev) => prev + 1)}
-              decrease={() => setPage((prev) => prev - 1)}
-              page={page}
-            /> */}
           </>
         )}
+        <Counter
+          increase={() => setPage((prev) => prev + 1)}
+          decrease={() => setPage((prev) => prev - 1)}
+          page={page}
+        />
         {movieLists.upcoming && (
           <UpcomingList
             cardData={movieLists.upcoming}

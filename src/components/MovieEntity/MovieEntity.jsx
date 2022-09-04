@@ -3,14 +3,13 @@ import { GET } from "../../utils/api.js";
 
 import "./index.css";
 
-const MovieEntity = ({ movieID, isRenderedList, setInputValue }) => {
+const MovieEntity = ({ movieID }) => {
   const [movieData, setMovieData] = useState({});
 
   useEffect(() => {
-    GET("movie", movieID, "")
-      .then((data) => setMovieData(data))
-      .then(setInputValue(""));
-  }, [isRenderedList]);
+    GET("movie", movieID, "").then((data) => setMovieData(data));
+    // .then(setInputValue(""));
+  }, [movieID]);
 
   const { poster_path, original_title, genres, vote_average, tagline, title } =
     movieData;

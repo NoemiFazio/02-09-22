@@ -14,7 +14,7 @@
   padding: 20px;
 }
 .MovieEntity h1 {
-  color: #f7b7b3;
+  color: #f22e2e;
 }
 
 .MovieEntity__info--title {
@@ -79,11 +79,14 @@
   transition: all 1s;
   border-radius: 50px;
   font-size: medium;
-  box-shadow: 0 0 10px 10px hsla(264, 65%, 22%, 0.247);
+  color: white;
+  background-color: #ff0000;
+  /* box-shadow: 0 0 10px 10px hsla(264, 65%, 22%, 0.247); */
 }
 
 .MovieEntity__book--btn:hover {
   background-color: #1a003f;
-  color: #f7b7b3;
-  border: 1px solid white;
+  color: #ff0000;
+  box-shadow: 0 0 5px 5px #f22e2e50;
+  background-color: white;
 }
